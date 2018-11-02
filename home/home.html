@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Busalot
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>From Location</ion-label>
+      <ion-input type="text" [(ngModel)]="from"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>To Location</ion-label>
+      <ion-input type="text" [(ngModel)]="to"></ion-input>
+    </ion-item>
+
+    <ion-item style="display: none;"></ion-item>
+
+  </ion-list>
+
+  <div padding>
+    <button block ion-button (click)="getRoutes()">Find Route</button>
+  </div>
+  
+
+
+  <ion-list>
+    <ion-item *ngFor="let route of routes" (click)="showModal(route.start_location, route.end_location)">
+    <h2>{{ route.start_location }} to {{route.end_location}}</h2>
+    <h3>({{route.name}})</h3>
+    <p>R{{route.price}}</p>
+    </ion-item>
+  </ion-list>
+</ion-content>
